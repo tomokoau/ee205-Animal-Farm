@@ -20,13 +20,14 @@
 enum Breed {UNKNOWN_BREED,MAINE_COON,MANX,SHORTHAIR,PERSIAN,SPHINX};
 enum Color { BLACK, WHITE, RED, BLUE, GREEN, PINK};
 enum Gender{UNKNOWN_GENDER, MALE, FEMALE};
+typedef float Weight;
 
 struct Cat{
 
     char name[MAX_CAT_NAME];
     enum Gender gender;
     enum Breed breed;
-    float weight;
+    Weight weight;
     bool isFixed;
     enum Color collarColor1;
     enum Color collarColor2;

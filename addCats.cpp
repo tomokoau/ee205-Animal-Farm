@@ -11,7 +11,7 @@
 
 #include "addCats.h"
 
-int addCat(char cat_name[],enum Gender gender,enum Breed breed, bool is_fixed, float weight,enum Color collarColor1, enum Color collarColor2, unsigned long long license){
+int addCat(char cat_name[],enum Gender gender,enum Breed breed, bool is_fixed, Weight weight,enum Color collarColor1, enum Color collarColor2, unsigned long long license){
 
     if (numCats >= MAXIMUM_CAT){
         fprintf(stderr, "error: database is full(max size is %d)\n", MAXIMUM_CAT);
