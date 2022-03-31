@@ -11,7 +11,7 @@
 
 #include "catDatabase.h"
 
-size_t numCats=0;
+NumCats numCats=0;
 
 struct Cat cats[MAXIMUM_CAT];
 

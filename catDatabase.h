@@ -21,6 +21,7 @@ enum Breed {UNKNOWN_BREED,MAINE_COON,MANX,SHORTHAIR,PERSIAN,SPHINX};
 enum Color { BLACK, WHITE, RED, BLUE, GREEN, PINK};
 enum Gender{UNKNOWN_GENDER, MALE, FEMALE};
 typedef float Weight;
+typedef size_t NumCats;
 
 struct Cat{
 
@@ -35,7 +36,7 @@ struct Cat{
 };
 
 extern struct Cat cats[];
-extern size_t numCats;
+extern NumCats numCats;
 
 extern char* genderName(const enum Gender gender);
 
