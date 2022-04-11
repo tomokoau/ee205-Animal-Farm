@@ -10,11 +10,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #pragma once
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cstring>
+#include <iostream>
+#include <cassert>
 #include "catDatabase.h"
-
+#include "Cat.h"
+using namespace  std;
 int printCat(long unsigned int index);
 int printAllCats();
-int findCat(char cat_name[]);
+int findCatByName(char cat_name[]);

@@ -9,10 +9,10 @@
 /// @date   30_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include <cassert>
 #include "catDatabase.h"
+#include "config.h"
+#include "Cat.h"
 
-int addCat(char cat_name[],enum Gender gender,enum Breed breed, bool is_fixed, Weight weight,enum Color collarColor1, enum Color collarColor2, unsigned long long license);
 
+bool addCat(Cat *newCat);

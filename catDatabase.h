@@ -14,34 +14,19 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
+#include "config.h"
+#include "Cat.h"
 
-#define MAX_CAT_NAME 30
-#define MAXIMUM_CAT 1024
-enum Breed {UNKNOWN_BREED,MAINE_COON,MANX,SHORTHAIR,PERSIAN,SPHINX};
-enum Color { BLACK, WHITE, RED, BLUE, GREEN, PINK};
-enum Gender{UNKNOWN_GENDER, MALE, FEMALE};
-typedef float Weight;
-typedef size_t NumCats;
 
-struct Cat{
 
-    char name[MAX_CAT_NAME];
-    enum Gender gender;
-    enum Breed breed;
-    Weight weight;
-    bool isFixed;
-    enum Color collarColor1;
-    enum Color collarColor2;
-    unsigned long long license;
-};
 
-extern struct Cat cats[];
+
 extern NumCats numCats;
 
 extern char* genderName(const enum Gender gender);
 
 extern char* breedName(const enum Breed breed);
 
-extern char* colorName(const enum Color color);
+extern Cat* catDatabaseHeadPointer;
 
-
+ extern bool validateDatabase();

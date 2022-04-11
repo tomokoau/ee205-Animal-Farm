@@ -13,10 +13,15 @@
 
 int printCat(long unsigned int index) {
     if (index >= numCats) {
-        fprintf(stderr,"animalFarm1: Bad cat [%lu]\n",index);
+        cerr<<"animalFarm1: Bad cat ["<<index<<"]"<<endl;
         return -1;
     }
-    printf("cat index = [%lu] name=[%s] gender=[%s] breed=[%s] isFixed=[%d] weight=[%f] color1=[%s] color2=[%s] license=[%llu]\n",index, cats[index].name, genderName(cats[index].gender), breedName(cats[index].breed),cats[index].isFixed,cats[index].weight, colorName(cats[index].collarColor1), colorName(cats[index].collarColor2), cats[index].license);
+    Cat* itr=catDatabaseHeadPointer;
+    for (int i=0; i<index; i++){
+        itr = itr->next;
+    }
+   cout<<"cat index = ["<<index<<"] name=["<<itr->getName()<<"]" ;
+   cout<<"gender=["<<genderName(itr->getGender())<<"] breed=["<<breedName(itr->getBreed())<<"] isFixed=["<<itr->isFixed()<<"] weight=["<<itr->getWeight()<<"]" <<endl ;
     return 0;
 }
 
@@ -28,14 +33,16 @@ int printAllCats(){
     return 0;
 }
 
-int findCat(char cat_name[]){
-    for(size_t i=0; i<numCats;i++){
-        if ( strcmp(cats[i].name, cat_name)==0){
-            return i;
+Cat* findCatByName( const char* name ) {
+    assert( Cat().validateName( name ) );
+
+
+    for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
+        if( strcmp( name, iCat->getName() ) == 0 ) {
+            return iCat ;
         }
     }
-
-    fprintf(stderr,"cat not found\n");
-
-    return -1;
+    cerr<<"cat not found"<<endl;
+    return nullptr ;
 }
+

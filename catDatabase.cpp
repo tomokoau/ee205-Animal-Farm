@@ -11,14 +11,12 @@
 
 #include "catDatabase.h"
 
-NumCats numCats=0;
+NumCats numCats = 0;
 
-struct Cat cats[MAXIMUM_CAT];
+Cat* catDatabaseHeadPointer = nullptr;
 
-char *genderName(const enum Gender gender)
-{
-    switch (gender)
-    {
+char *genderName(const enum Gender gender) {
+    switch (gender) {
         case (UNKNOWN_GENDER):
             return "UNKNOWN_GENDER";
         case (MALE):
@@ -30,10 +28,8 @@ char *genderName(const enum Gender gender)
     }
 }
 
-char *breedName(const enum Breed breed)
-{
-    switch (breed)
-    {
+char *breedName(const enum Breed breed) {
+    switch (breed) {
         case (UNKNOWN_BREED):
             return "UNKNOWN_BREED";
         case (MAINE_COON):
@@ -51,23 +47,21 @@ char *breedName(const enum Breed breed)
     }
 }
 
-char *colorName(const enum Color color)
-{
-    switch (color)
-    {
-        case (BLACK):
-            return "BLACK";
-        case (WHITE):
-            return "WHITE";
-        case (RED):
-            return "RED";
-        case (BLUE):
-            return "BLUE";
-        case (GREEN):
-            return "GREEN";
-        case (PINK):
-            return "PINK";
-        default:
-            return "\0";
+bool validateDatabase() {
+
+    for (Cat *currentCat = catDatabaseHeadPointer; currentCat != nullptr; currentCat = currentCat->next) {
+        if (!currentCat->validate()) {
+            return false;
+        }
+
     }
+
+
+#ifdef DEBUG
+    cout << PROGRAM_NAME << ": The database is valid." << endl ;
+#endif
+
+    return true;
 }
+
+

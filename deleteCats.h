@@ -10,9 +10,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #pragma once
-#include <stdio.h>
-#include <stdlib.h>
+#include <cassert>
 #include "catDatabase.h"
+#include "Cat.h"
 
-int deleteAllCats();
+
+bool deleteAllCats();
+bool deleteCat( Cat* deleteThisCat);
+
 

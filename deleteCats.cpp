@@ -11,7 +11,52 @@
 
 #include "deleteCats.h"
 
-int deleteAllCats(){
-    numCats=0;
-    return 0;
+bool deleteCat( Cat* deleteThisCat ) {
+    assert( deleteThisCat != nullptr ) ;
+
+    assert( validateDatabase() ) ;
+
+
+    if( deleteThisCat == catDatabaseHeadPointer ) {
+        catDatabaseHeadPointer = catDatabaseHeadPointer->next ;
+        delete deleteThisCat ;
+        numCats--;
+
+        assert( validateDatabase() ) ;
+        return true ;
+    }
+
+
+    Cat* iCat = catDatabaseHeadPointer ;
+    while( iCat != nullptr ) {
+        if( iCat->next == deleteThisCat ) {
+            iCat->next = deleteThisCat->next ;
+            delete deleteThisCat ;
+            numCats--;
+
+            assert( validateDatabase() ) ;
+
+            return true ;
+        }
+        iCat = iCat->next ;
+    }
+
+    assert( validateDatabase() ) ;
+
+   return false;
+}
+
+
+
+bool deleteAllCats() {
+
+    while(catDatabaseHeadPointer != nullptr ) {
+        deleteCat(catDatabaseHeadPointer ) ;
+    }
+
+
+
+
+
+    return true ;
 }
