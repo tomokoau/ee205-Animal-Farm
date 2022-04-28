@@ -10,10 +10,22 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "Animal.h"
-
+#include <cassert>
+const std::string Animal::KINGDOM_NAME = "Animalia";
 
 Animal::Animal(const Weight::t_weight newMaxWeight, const std::string &newClassification,
                const std::string &newSpecies) {
+    if( !validateClassification( newClassification ) ) {
+       cout<<"classification invalid"<<endl;
+    }
+    classification = newClassification;
+
+    if( !validateSpecies( newSpecies ) ) {
+        cout<<"species invalid"<<endl;
+    }
+    species = newSpecies;
+
+    Animal::validate();
 
 }
 
@@ -22,7 +34,6 @@ Animal::Animal(const Gender newGender, const Weight::t_weight newWeight, const W
     if( !validateClassification( newClassification ) ) {
 
      cout<< "The classification is invalid" <<endl;
-     return false;
     }
     classification = newClassification;
 
@@ -83,7 +94,7 @@ bool Animal::validateSpecies(const std::string &checkSpecies) noexcept {
 void Animal::dump() const noexcept {
     assert( validate() ) ;
 
-    PRINT_HEADING_FOR_DUMP
+    PRINT_HEADING_FOR_DUMP;
     Node::dump();
 
     FORMAT_LINE_FOR_DUMP( "Animal", "this" ) << this << endl ;
@@ -91,7 +102,7 @@ void Animal::dump() const noexcept {
     FORMAT_LINE_FOR_DUMP( "Animal", "classification" ) << getClassification() << endl ;
     FORMAT_LINE_FOR_DUMP( "Animal", "species" ) << getSpecies() << endl ;
     FORMAT_LINE_FOR_DUMP( "Animal", "gender" ) << getGender() << endl ;
-    FORMAT_LINE_FOR_DUMP( "Animal", "weight" ) << const Weight << endl ;
+    FORMAT_LINE_FOR_DUMP( "Animal", "weight" ) << getWeight() << endl ;
 }
 
 bool Animal::validate() const noexcept {

@@ -20,6 +20,7 @@ SinglyLinkedList::SinglyLinkedList() {
 void SinglyLinkedList::push_front(Node *newNode) {
     if (newNode == nullptr) { cout << PROGRAM_NAME<<"newNode cant be nullptr" << endl; }
     if( !newNode->validate() ) { cout<<PROGRAM_NAME<<"newNode is not valid"<<endl;}
+    count++;
     newNode->next = head;
     head=newNode;
 
@@ -42,13 +43,14 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
 
     }
     if( head == nullptr) {cout<< PROGRAM_NAME<<"Cant insert after if list is empty"<<endl;}
+    count++;
     newNode->next = currentNode->next;
     currentNode->next = newNode;
 }
 
 void SinglyLinkedList::dump() const noexcept {
     cout << "SinglyLinkedList:  head=[" << head << "]" << endl;
-    for( currentNode = head ; currentNode != nullptr ; currentNode = currentNode->next ) {
+    for(Node *currentNode = head ; currentNode != nullptr ; currentNode = currentNode->next ) {
         currentNode->dump();
     }
 }
@@ -62,19 +64,20 @@ bool SinglyLinkedList::validate( ) const noexcept {
         assert( !empty() );
     }
     unsigned int count =0;
-    currentNode =head
+    Node *currentNode =head;
 
     while( currentNode != nullptr ) {
         assert( currentNode->validate() ) ;
         count++;
         currentNode = currentNode->next;
     }
+    //cout<<size()<<"    "<<count<<endl;
     assert( size() == count );
 
 
     return true;
 }
-}
+
 
 
 

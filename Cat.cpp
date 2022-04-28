@@ -9,143 +9,78 @@
 /// @date   10_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-////#include "Cat.h"
-////#include "catDatabase.h"
-//
-//Cat::Cat() {
-//    memset(name, 0, MAX_CAT_NAME);
-//    gender = UNKNOWN_GENDER;
-//    breed = UNKNOWN_BREED;
-//    isCatFixed = false;
-//    weight = UNKNOWN_WEIGHT;
-//    next = nullptr;
-//}
-//
-//Cat::Cat(const char* newName, const Gender newGender, const Breed newBreed, const Weight newWeight) {
-//    setName(const_cast<char *>(newName));
-//    setGender(newGender);
-//    setBreed(newBreed);
-//    setWeight(newWeight);
-//    assert (validate());
-//}
-//
-//Gender Cat::getGender() const {
-//    return gender;
-//}
-//
-//const char *Cat::getName() const {
-//    return name;
-//}
-//
-//void Cat::setGender(Gender gender) {
-//    Cat::gender = gender;
-//}
-//
-//Breed Cat::getBreed() const {
-//    return breed;
-//}
-//
-//void Cat::setBreed(Breed breed) {
-//    Cat::breed = breed;
-//}
-//
-//Weight Cat::getWeight() const {
-//    return weight;
-//}
-//
-//void Cat::setWeight(Weight weight) {
-//    Cat::weight = weight;
-//}
-//
-//bool Cat::isFixed() const {
-//    return isCatFixed;
-//}
-//
-//void Cat::setIsCatFixed() {
-//    Cat::isCatFixed = true;
-//}
-//
-//void Cat::setName(char *name) {
-//    strcpy(Cat::name, name);
-//
-//}
-//#define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
-//bool Cat::print() const noexcept {
-//    assert(validate());
-//
-//    cout << setw(80) << setfill('=') << "" << endl;
-//    cout << setfill(' ');
-//    cout << left;
-//    cout << boolalpha;
-//    FORMAT_LINE("Cat", "name") << getName() << endl;
-//    FORMAT_LINE("Cat", "gender") << genderName(getGender()) << endl;
-//    FORMAT_LINE("Cat", "breed") << breedName(getBreed()) << endl;
-//    FORMAT_LINE("Cat", "isFixed") << isFixed() << endl;
-//    FORMAT_LINE("Cat", "weight") << getWeight() << endl;
-//
-//    return true;
-//}
-//
-// bool Cat::validate() const {
-//    if (
-//            validateName(name) &&
-//            validateGender(gender) &&
-//            validateBreed(breed) &&
-//            validateWeight(weight)
-//            ) {
-//        return true;
-//    }
-//    return false;
-//}
-//
-//bool Cat::validateName(const char *newName) const {
-//    if (strlen(newName) == 0 || strlen(newName) > MAX_CAT_NAME) {
-//        cerr<< "error: name must be of length 1 to " << MAX_CAT_NAME<<endl;
-//        return false;
-//    }
-//    return true;
-//}
-//
-//bool Cat::validateGender(const Gender newGender) const {
-//    if (newGender == UNKNOWN_GENDER) {
-//        return false;
-//    }
-//
-//    return true;
-//}
-//
-//bool Cat::validateBreed(const Breed newBreed) const {
-//    if (newBreed == UNKNOWN_BREED) {
-//        return false;
-//    }
-//
-//    return true;
-//}
-//
-//bool Cat::validateWeight(const Weight newWeight) const {
-//    if (newWeight <= 0) {
-//        return false;
-//    }
-//
-//    return true;
-//}
-//
-//
-//Cat::~Cat() {
-//
-//    memset(name, 0, MAX_CAT_NAME);
-//    gender = UNKNOWN_GENDER;
-//    breed = UNKNOWN_BREED;
-//    isCatFixed = false;
-//    weight = UNKNOWN_WEIGHT;
-//    next = nullptr;
-//
-//
-//}
-//
-//void Cat::fixCat() {
-//    setIsCatFixed();
-//
-//}
+#include <stdexcept>
+#include <iostream>
+#include <cassert>
+
+#include "Cat.h"
+
+using namespace std ;
+
+
+const std::string Cat::SPECIES_NAME = "Felis Catus";
+const Weight::t_weight Cat::MAX_WEIGHT = 40;
+
+
+string Cat::getName() const noexcept {
+    return name;
+}
+
+
+void Cat::setName( const string& newName ) {
+    if( !validateName( newName )) {
+        cout<<"not appropriate name"<<endl;
+    }
+    name = newName ;
+}
+
+
+bool Cat::isFixed() const noexcept {
+    return isCatFixed;
+}
+
+
+
+void Cat::fixCat() noexcept {
+    Cat::isCatFixed = true;
+}
+
+
+
+void Cat::dump() const noexcept {
+    assert( validate() ) ;
+
+    Mammal::dump() ;
+
+    FORMAT_LINE_FOR_DUMP( "Cat", "name" )    << getName() << endl ;
+    FORMAT_LINE_FOR_DUMP( "Cat", "isFixed" ) << isFixed() << endl ;
+}
+
+
+/// Check the Cat object.
+bool Cat::validate() const noexcept {
+    Mammal::validate() ;
+
+    assert( validateName( getName() ));
+
+    return true;
+}
+
+
+/// @param newName The name to check
+/// @return `true` if the name is valid (not empty).  `false` if the cat doesn't have a name.
+bool Cat::validateName( const std::string& newName ) {
+    if( newName.empty() ) {
+        cout << PROGRAM_NAME ": A cat should have a name" << endl;
+        return false;
+    }
+
+    return true;
+}
+
+
+std::string Cat::speak() const noexcept {
+    return "Meow" ;
+}
 
 

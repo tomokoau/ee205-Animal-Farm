@@ -16,6 +16,7 @@
 #include <iomanip>
 
 #include "Weight.h"
+#include "config.h"
 
 using namespace std;
 
@@ -160,13 +161,13 @@ noexcept{
 }
 void Weight::setWeight( float newWeight ){
     weight= newWeight;
+    //cout<<newWeight<<endl;
 }
 void Weight::setWeight( float newWeight, UnitOfWeight weightUnits ){
     weight = newWeight;
     unitOfWeight = weightUnits;
 }
 void Weight::setMaxWeight(t_weight newMaxWeight) {
-    /// The maximum weight should not be set when we start this routine
     assert( !bHasMax );
 
     if( !isWeightValid( newMaxWeight) ) {
@@ -224,23 +225,20 @@ bool Weight::validate() const noexcept{
     return true;
 
 }
-#define FORMAT_LINE( className, member ) std::cout \
-                                      << std::setw(8) << (className) \
-                                      << std::setw(20) << (member)   \
-                                      << std::setw(52)
-void Weight::dump() const noexcept {
-// Print ===================================================================
-    cout << setw(80) << setfill( '=' ) << "" << endl ;
-    cout << setfill( ' ' ) ;   // Space pad
-    cout << left ;             // Left justify
-    cout << boolalpha ;        // Print `true` and `false` for `bool`s
 
-    FORMAT_LINE( "Weight", "this" )         << this         << endl ;
-    FORMAT_LINE( "Weight", "isKnown" )      << bIsKnown     << endl ;
-    FORMAT_LINE( "Weight", "weight" )       << weight       << endl ;
-    FORMAT_LINE( "Weight", "unitOfWeight" ) << unitOfWeight << endl ;
-    FORMAT_LINE( "Weight", "hasMax" )       << bHasMax      << endl ;
-    FORMAT_LINE( "Weight", "maxWeight" )    << maxWeight    << endl ;
+void Weight::dump() const noexcept {
+//// Print ===================================================================
+//    cout << setw(80) << setfill( '=' ) << "" << endl ;
+//    cout << setfill( ' ' ) ;   // Space pad
+//    cout << left ;             // Left justify
+//    cout << boolalpha ;        // Print `true` and `false` for `bool`s
+
+    FORMAT_LINE_FOR_DUMP( "Weight", "this" ) << this << endl ;
+    FORMAT_LINE_FOR_DUMP( "Weight", "isKnown" ) << bIsKnown << endl ;
+    FORMAT_LINE_FOR_DUMP( "Weight", "weight" ) << weight << endl ;
+    FORMAT_LINE_FOR_DUMP( "Weight", "unitOfWeight" ) << unitOfWeight << endl ;
+    FORMAT_LINE_FOR_DUMP( "Weight", "hasMax" ) << bHasMax << endl ;
+    FORMAT_LINE_FOR_DUMP( "Weight", "maxWeight" ) << maxWeight << endl ;
 }
 
 ///compairs weights
