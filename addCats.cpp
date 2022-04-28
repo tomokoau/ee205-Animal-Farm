@@ -9,24 +9,24 @@
 /// @date   20_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "addCats.h"
-
-
-
-
-bool addCat(Cat *newCat) {
-    assert(newCat != nullptr);
-    newCat->validate();
-
-    assert(validateDatabase());
-
-
-    newCat->next = catDatabaseHeadPointer;
-    catDatabaseHeadPointer = newCat;
-    numCats++;
-
-    assert(validateDatabase());
-
-
-    return true;
-}
+//#include "addCats.h"
+//
+//
+//
+//
+//bool addCat(Cat *newCat) {
+//    assert(newCat != nullptr);
+//    newCat->validate();
+//
+//    assert(validateDatabase());
+//
+//
+//    newCat->next = catDatabaseHeadPointer;
+//    catDatabaseHeadPointer = newCat;
+//    numCats++;
+//
+//    assert(validateDatabase());
+//
+//
+//    return true;
+//}

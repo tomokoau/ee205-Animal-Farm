@@ -9,24 +9,24 @@
 /// @date   30_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#pragma once
-#include <stdio.h>
-#include <stdbool.h>
-#include <string.h>
-#include <stdlib.h>
-#include "config.h"
-#include "Cat.h"
-
-
-
-
-
-extern NumCats numCats;
-
-extern char* genderName(const enum Gender gender);
-
-extern char* breedName(const enum Breed breed);
-
-extern Cat* catDatabaseHeadPointer;
-
- extern bool validateDatabase();
+//#pragma once
+//#include <stdio.h>
+//#include <stdbool.h>
+//#include <string.h>
+//#include <stdlib.h>
+////#include "config.h"
+////#include "Cat.h"
+//
+//
+//
+//
+//
+//extern NumCats numCats;
+//
+//extern char* genderName(const enum Gender gender);
+//
+//extern char* breedName(const enum Breed breed);
+//
+//extern Cat* catDatabaseHeadPointer;
+//
+// extern bool validateDatabase();

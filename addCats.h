@@ -8,11 +8,11 @@
 /// @author Tomoko Austin <tomokoau@hawaii.edu>
 /// @date   30_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
-#pragma once
-#include <cassert>
-#include "catDatabase.h"
-#include "config.h"
-#include "Cat.h"
-
-
-bool addCat(Cat *newCat);
+//#pragma once
+//#include <cassert>
+////#include "catDatabase.h"
+////#include "config.h"
+////#include "Cat.h"
+//
+//
+//bool addCat(Cat *newCat);

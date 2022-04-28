@@ -9,13 +9,13 @@
 /// @date   20_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#pragma once
-#include <cstring>
-#include <iostream>
-#include <cassert>
-#include "catDatabase.h"
-#include "Cat.h"
-using namespace  std;
-int printCat(long unsigned int index);
-int printAllCats();
-int findCatByName(char cat_name[]);
+//#pragma once
+//#include <cstring>
+//#include <iostream>
+//#include <cassert>
+////#include "catDatabase.h"
+////#include "Cat.h"
+//using namespace  std;
+//int printCat(long unsigned int index);
+//int printAllCats();
+//int findCatByName(char cat_name[]);
